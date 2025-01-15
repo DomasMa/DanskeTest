@@ -6,13 +6,14 @@ import { NotificationBox } from './notification-box';
 
 export const Basket = () => {
     const [notification, setNotification] = useState<Notification>();
+    const BasketSize = 25;
     const handleAddBasketItem = ({ id }: Notification) => {
         setNotification({ id });
     }
     useEventSubscribe(EventName.addBasketItem, handleAddBasketItem);
 
-    return <div>
-        <BiBasket size={25} title='basket' />
-        {notification && <NotificationBox key={notification.id} id={notification.id} />}
-    </div>;
+    return <>
+        <BiBasket size={BasketSize} title='basket'/>
+        {notification && <NotificationBox key={notification.id} id={notification.id} style={{top: BasketSize}}/>}
+    </>;
 }

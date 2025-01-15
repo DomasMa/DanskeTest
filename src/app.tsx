@@ -6,7 +6,7 @@ function App() {
   return (
     <Routes>
       <Route element={<MainLayout />}>
-        <Route element={<HeaderLayout />}>
+        <Route element={<HeaderLayout contentPosition="center" />}>
           <Route path='/' element={<Home />} />
         </Route>
         <Route path='/task' element={<Task />} />
