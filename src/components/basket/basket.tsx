@@ -28,18 +28,15 @@ export const Basket: React.FC<BasketProps> = ({basketSize}) => {
             return margin;
         }
 
-        const spaceOnRight = viewportWidth - basketRect.right;
-        let preferredOffset = 0;
-
-        if (spaceOnRight < notificationWidth) {
-            preferredOffset = basketRect.width - notificationWidth;
-        }
+        const preferredOffset =
+            (basketRect.width - notificationWidth) / 2;
 
         const minOffset = margin - basketRect.left;
         const maxOffset = viewportWidth - margin - basketRect.left - notificationWidth;
 
         return Math.max(minOffset, Math.min(preferredOffset, maxOffset));
     }, []);
+
 
     const handleAddBasketItem = ({id}: Notification) => {
         setOffsetLeft(calculateOffset());
