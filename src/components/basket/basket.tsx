@@ -22,14 +22,13 @@ export const Basket: React.FC<BasketProps> = ({basketSize}) => {
         if (!basketRef.current) return 0;
 
         const basketRect = basketRef.current.getBoundingClientRect();
-        const viewportWidth = document.documentElement.clientWidth;
+        const viewportWidth = window.innerWidth;
 
         if (viewportWidth < 480) {
             return margin;
         }
 
-        const preferredOffset =
-            (basketRect.width - notificationWidth) / 2;
+        const preferredOffset = (basketRect.width - notificationWidth) / 2;
 
         const minOffset = margin - basketRect.left;
         const maxOffset = viewportWidth - margin - basketRect.left - notificationWidth;
