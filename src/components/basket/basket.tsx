@@ -46,12 +46,16 @@ export const Basket: React.FC<BasketProps> = ({basketSize}) => {
         if (!notification) {
             return;
         }
-        const handleResize = () => {
+        const recalculateOffset = () => {
             setOffsetLeft(calculateOffset());
         };
 
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
+        window.addEventListener('resize', recalculateOffset);
+        window.addEventListener('scroll', recalculateOffset);
+        return () => {
+            window.removeEventListener('resize', recalculateOffset);
+            window.removeEventListener('scroll', recalculateOffset);
+        }
     }, [calculateOffset, notification]);
 
     useEventSubscribe(EventName.addBasketItem, handleAddBasketItem);
