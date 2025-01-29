@@ -8,7 +8,7 @@ interface NotificationBoxProps {
 }
 
 export const NotificationBox = ({id, offsetLeft, notificationWidth}: NotificationBoxProps) => {
-    return <div className={clsx(styles.notificationBox)} style={{
+    return <div className={clsx(styles.notificationBox, styles.fadeOut)} style={{
         '--left-offset': `${offsetLeft}px`,
         '--notification-width': `${notificationWidth}px`
     } as React.CSSProperties}>

@@ -8,12 +8,13 @@ import styles from './basket.module.css';
 
 interface BasketProps {
     basketSize: number;
-    margin: number;
-    notificationWidth: number;
 }
-export const Basket: React.FC<BasketProps> = ({basketSize,margin,notificationWidth  }) => {
+
+export const Basket: React.FC<BasketProps> = ({basketSize}) => {
     const [notification, setNotification] = useState<Notification>();
     const basketRef = useRef<HTMLDivElement>(null);
+    const margin = 10;
+    const notificationWidth = 400;
 
     const [offsetLeft, setOffsetLeft] = useState<number>(0);
 
@@ -38,7 +39,7 @@ export const Basket: React.FC<BasketProps> = ({basketSize,margin,notificationWid
         const maxOffset = viewportWidth - margin - basketRect.left - notificationWidth;
 
         return Math.max(minOffset, Math.min(preferredOffset, maxOffset));
-    }, [margin, notificationWidth]);
+    }, []);
 
     const handleAddBasketItem = ({id}: Notification) => {
         setOffsetLeft(calculateOffset());
