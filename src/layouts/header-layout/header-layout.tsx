@@ -1,21 +1,11 @@
 import { Outlet } from 'react-router-dom';
 import { Basket } from '../../components';
 import style from './header-layout.module.css';
-import clsx from 'clsx';
 
-interface HeaderLayoutProps {
-    contentPosition?: 'center' | 'right'; // left is default
-}
-export const HeaderLayout = ({contentPosition}: HeaderLayoutProps) => {
+export const HeaderLayout = () => {
     return <>
-        <div  className={clsx(
-            style.subheader,
-            {
-                [style.contentCenter]: contentPosition === 'center',
-                [style.contentRight]: contentPosition === 'right',
-            }
-        )}>
-        <Basket />
+        <div className={style.subheader}>
+            <Basket basketSize={25} margin={10} notificationWidth={400} />
         </div>
         <Outlet />
     </>

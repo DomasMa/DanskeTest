@@ -1,13 +1,17 @@
 import clsx from 'clsx';
 import styles from './notification-box.module.css';
 
-interface NotificationBoxProps  {
+interface NotificationBoxProps {
     id: number;
-    style?: React.CSSProperties;
+    offsetLeft?: number;
+    notificationWidth?: number;
 }
 
-export const NotificationBox = ({ id, style}: NotificationBoxProps) => {
-    return <div className={clsx(styles.notificationBox, styles.fadeOut)} style={style}>
+export const NotificationBox = ({id, offsetLeft, notificationWidth}: NotificationBoxProps) => {
+    return <div className={clsx(styles.notificationBox)} style={{
+        '--left-offset': `${offsetLeft}px`,
+        '--notification-width': `${notificationWidth}px`
+    } as React.CSSProperties}>
         order item No. {id}
     </div>
 }
